@@ -23,7 +23,7 @@ import java.io.File;
 import org.jspecify.annotations.NonNull;
 
 /**
- * A list of patterns to be matched
+ * A list of patterns to be matched.
  *
  * @author Kristian Rosenvold
  * @deprecated use {@code java.nio.file.DirectoryStream.Filter<T>} and related classes
@@ -40,8 +40,8 @@ public class MatchPatterns {
      * <p>Checks these MatchPatterns against a specified string.</p>
      * <p>Uses far less string tokenization than any of the alternatives.</p>
      *
-     * @param name            The name to look for
-     * @param isCaseSensitive If the comparison is case sensitive
+     * @param name            the name to look for
+     * @param isCaseSensitive if the comparison is case sensitive
      * @return true if any of the supplied patterns match
      */
     public boolean matches(@NonNull String name, boolean isCaseSensitive) {
@@ -55,9 +55,9 @@ public class MatchPatterns {
     }
 
     /**
-     * @param name The name.
-     * @param isCaseSensitive being case sensetive.
-     * @return true if any of the supplied patterns match start.
+     * @param name the name
+     * @param isCaseSensitive being case sensetive
+     * @return true if any of the supplied patterns match start
      */
     public boolean matchesPatternStart(@NonNull String name, boolean isCaseSensitive) {
         for (MatchPattern includesPattern : patterns) {
@@ -69,8 +69,8 @@ public class MatchPatterns {
     }
 
     /**
-     * @param sources The sources
-     * @return Converted match patterns.
+     * @param sources the sources
+     * @return converted match patterns
      */
     public static MatchPatterns from(@NonNull String... sources) {
         final int length = sources.length;

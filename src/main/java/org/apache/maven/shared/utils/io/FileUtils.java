@@ -91,7 +91,7 @@ import org.jspecify.annotations.Nullable;
  */
 public class FileUtils {
     /**
-     * protected constructor.
+     * Protected constructor.
      */
     protected FileUtils() {
         // This is a utility class.  Normally don't instantiate
@@ -113,7 +113,7 @@ public class FileUtils {
     private static final int FILE_COPY_BUFFER_SIZE = ONE_MB * 30;
 
     /**
-     * The vm line separator
+     * The vm line separator.
      */
     private static final String FS = FileSystems.getDefault().getSeparator();
 
@@ -144,7 +144,7 @@ public class FileUtils {
     }
 
     /**
-     * @return the default excludes pattern as comma separated string.
+     * @return the default excludes pattern as comma separated string
      * @see DirectoryScanner#DEFAULTEXCLUDES
      * @see StringUtils#join(Object[], String)
      */
@@ -344,7 +344,7 @@ public class FileUtils {
 
     /**
      * Writes data to a file. The file will be created if it does not exist.
-     * Note: the data is written with platform encoding
+     * Note: the data is written with platform encoding.
      *
      * @param fileName the path of the file to write
      * @param data     the content to write to the file
@@ -676,11 +676,11 @@ public class FileUtils {
      *
      * @param source               an existing <code>File</code> to copy
      * @param destinationDirectory a directory to copy <code>source</code> into
-     * @throws java.io.FileNotFoundException if <code>source</code> isn't a normal file
      * @throws IllegalArgumentException      if <code>destinationDirectory</code> isn't a directory
      * @throws IOException                   if <code>source</code> does not exist, the file in
      *                                       <code>destinationDirectory</code> cannot be written to, or an IO error
      *                                       occurs during copying
+     * @throws java.io.FileNotFoundException if <code>source</code> isn't a normal file
      * @deprecated use {@code org.apache.commons.io.FileUtils.copyFileToDirectory()}
      */
     @Deprecated
@@ -701,11 +701,11 @@ public class FileUtils {
      *
      * @param source               an existing <code>File</code> to copy
      * @param destinationDirectory a directory to copy <code>source</code> into
-     * @throws java.io.FileNotFoundException if <code>source</code> isn't a normal file
      * @throws IllegalArgumentException      if <code>destinationDirectory</code> isn't a directory
      * @throws IOException                   if <code>source</code> does not exist, the file in
      *                                       <code>destinationDirectory</code> cannot be written to, or an IO error
      *                                       occurs during copying
+     * @throws java.io.FileNotFoundException if <code>source</code> isn't a normal file
      */
     private static void copyFileToDirectoryIfModified(
             @NonNull final File source, @NonNull final File destinationDirectory) throws IOException {
@@ -791,12 +791,12 @@ public class FileUtils {
      * The directories up to <code>destination</code> will be created if they don't already exist.
      * <code>destination</code> will be overwritten if it already exists.
      *
-     * @param source      An existing non-directory <code>File</code> to copy bytes from.
-     * @param destination A non-directory <code>File</code> to write bytes to (possibly
-     *                    overwriting).
+     * @param source      an existing non-directory <code>File</code> to copy bytes from
+     * @param destination a non-directory <code>File</code> to write bytes to (possibly
+     *                    overwriting)
      * @return true if no problem occurred
      * @throws IOException if <code>source</code> does not exist, <code>destination</code> cannot be
-     *                     written to, or an IO error occurs during copying.
+     *                     written to, or an IO error occurs during copying
      */
     private static boolean copyFileIfModified(@NonNull final File source, @NonNull final File destination)
             throws IOException {
@@ -1091,8 +1091,8 @@ public class FileUtils {
      * Make a directory.
      *
      * @param file not null
+     * @throws IllegalArgumentException if the file contains illegal Windows characters under Windows OS
      * @throws IOException if a file already exists with the specified name or the directory is unable to be created
-     * @throws IllegalArgumentException if the file contains illegal Windows characters under Windows OS.
      * @see #INVALID_CHARACTERS_FOR_WINDOWS_FILE_NAME
      * @deprecated use {@code org.apache.commons.io.FileUtils.forceMkdir()}
      */
@@ -1257,8 +1257,8 @@ public class FileUtils {
      * @param includes  the Ant includes pattern, comma separated
      * @param excludes  the Ant excludes pattern, comma separated
      * @return a list of File objects
-     * @see #getFileNames(File, String, String, boolean)
      * @throws IOException never
+     * @see #getFileNames(File, String, String, boolean)
      */
     @NonNull
     public static List<File> getFiles(@NonNull File directory, @Nullable String includes, @Nullable String excludes)
@@ -1477,8 +1477,8 @@ public class FileUtils {
      *
      * @param sourceDirectory      the source directory
      * @param destinationDirectory the target directory
-     * @param includes             Ant include pattern
-     * @param excludes             Ant exclude pattern
+     * @param includes             ant include pattern
+     * @param excludes             ant exclude pattern
      * @throws IOException if the source is a file or cannot be copied
      * @see #getFiles(File, String, String)
      * @deprecated use {@code org.apache.commons.io.FileUtils.copyDirectory()}
@@ -1638,7 +1638,7 @@ public class FileUtils {
      * @param suffix    file extension; include the '.'
      * @param parentDir directory to create the temporary file in <code>-java.io.tmpdir</code>
      *                  used if not specified
-     * @return a File reference to the new temporary file.
+     * @return a File reference to the new temporary file
      * @deprecated use {@code java.nio.Files.createTempFile()}
      */
     @Deprecated
@@ -1805,8 +1805,8 @@ public class FileUtils {
      * Note that permissions are copied on a best-efforts basis,
      * failure to copy permissions will not result in an exception.
      *
-     * @param source the file to copy permissions from.
-     * @param destination the file to copy permissions to.
+     * @param source the file to copy permissions from
+     * @param destination the file to copy permissions to
      */
     private static void copyFilePermissions(@NonNull File source, @NonNull File destination) throws IOException {
         try {
@@ -1849,8 +1849,9 @@ public class FileUtils {
 
     /**
      * Returns the named charset or the default charset.
+     *
      * @param encoding the name or alias of the charset, null or empty
-     * @return A charset object for the named or default charset.
+     * @return a charset object for the named or default charset
      */
     private static Charset charset(String encoding) {
         if (encoding == null || encoding.isEmpty()) {
@@ -1866,7 +1867,7 @@ public class FileUtils {
      *
      * @param f not null file
      * @return <code>false</code> if the file path contains any of forbidden Windows characters,
-     * <code>true</code> if the Os is not Windows or if the file path respect the Windows constraints.
+     * <code>true</code> if the Os is not Windows or if the file path respect the Windows constraints
      * @see #INVALID_CHARACTERS_FOR_WINDOWS_FILE_NAME
      */
     private static boolean isValidWindowsFileName(@NonNull File f) {
@@ -1887,8 +1888,8 @@ public class FileUtils {
      * Checks whether a given file is a symbolic link.
      *
      * @param file the file to check
-     * @throws IOException in case of failure.
-     * @return true if symbolic link false otherwise.
+     * @return true if symbolic link false otherwise
+     * @throws IOException in case of failure
      * @deprecated use {@code java.nio.file.Files.isSymbolicLink(file.toPath())}
      */
     @Deprecated
@@ -1901,7 +1902,6 @@ public class FileUtils {
      *
      * @param file the file to check
      * @return true if and only if we reliably can say this is a symlink
-     *
      * @throws IOException in case of failure
      * @deprecated use {@code java.nio.file.Files.isSymbolicLink(file.toPath())}
      */
